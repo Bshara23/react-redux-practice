@@ -1,0 +1,62 @@
+the object window can hold a variable or function
+and it can be used by other classes
+
+examples:
+
+window.x = 4
+window.f = (a) => {return a + 1}
+
+when it come to structures objects, you can use:
+
+    window.localStorage.setItem('myKey', JSON.stringify(myObj))
+
+    or
+
+    window.objA = objA
+
+
+and to retrive it:
+
+    const myObj = JSON.parse(window.localStorage.getItem('myKey'))
+
+    or
+
+    window.objA
+
+
+for more clear writing, create a name space
+to store global variables and to avoid collision:
+
+var myNamespace = window.myNamespace || {};
+myNamespace.variable = 'Some value';
+
+
+Performance:
+
+Global variables > DOM values > LocalStorage > AJAX
+
+Global variables are in memory.
+DOM values means walking the tree which can be slow.
+LocalStorage means reading/writing to disk.
+AJAX requests means you have additional network latency.
+
+
+more info:
+The read-only localStorage property allows you to access 
+a Storage object for the Document's origin; the stored 
+data is saved across browser sessions. localStorage 
+is similar to sessionStorage, except that while data 
+stored in localStorage has no expiration time, data 
+stored in sessionStorage gets cleared when the page 
+session ends — that is, when the page is closed. 
+(Data in a localStorage object created in a "private browsing" 
+or "incognito" session is cleared when the last "private" 
+tab is closed.)
+
+
+
+
+
+
+
+
