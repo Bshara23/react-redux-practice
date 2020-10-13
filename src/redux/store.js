@@ -1,23 +1,33 @@
-import { createStore } from 'redux'
+import { createStore } from "redux";
 
 const initialState = {
   posts: [],
-  loginModal: {
-    open: false
-  }
-}
+  posts2: [],
+
+};
 
 const reducer = (state = initialState, action) => {
-  if (action.type === 'ADD_POST') {
-    return Object.assign({}, state, {
-      posts: state.posts.concat(action.payload)
-    })
+  switch (action.type) {
+    case "ADD_POST":
+      return Object.assign({}, state, {
+        posts: state.posts.concat(action.payload),
+      });
+    case "ADD_POST2":
+      return Object.assign({}, state, {
+        posts2: action.payload,
+      });
+
+    default:
+      break;
   }
 
-  return state
-}
 
-const store = createStore(reducer,
-   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  return state;
+};
 
-export default store
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+export default store;

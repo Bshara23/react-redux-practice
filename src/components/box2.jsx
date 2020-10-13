@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 
 class Box2 extends Component {
   render() {
-    const myObj = JSON.parse(window.localStorage.getItem("A"));
+    //const myObj = JSON.parse(window.localStorage.getItem("A"));
+    console.log("render box2");
 
     return (
-      <div>
+      <div className="upperChild">
           <h1>Box 2</h1>
         {this.props.posts.map((post) => (
           <li key={post.id}>{post.title}</li>

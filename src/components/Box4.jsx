@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-class Box1 extends Component {
+class Box4 extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,22 +19,22 @@ class Box1 extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch({
-      type: "ADD_POST",
-      payload: { id: this.state.postId, title: this.state.value },
-    });
    
+    this.props.dispatch({
+      type: "ADD_POST2",
+      payload: this.state.value,
+    });
 
     this.setState({ postId: this.state.postId + 1 });
   }
 
   render() {
-    console.log("render box1");
+    console.log("render box4");
 
     return (
       <div className="App">
         <header className="App-header">
-        <h1>Box 1</h1>
+        <h1>Box 4</h1>
 
           <form onSubmit={this.handleSubmit}>
             <input
@@ -49,9 +49,8 @@ class Box1 extends Component {
             </div>
           </form>
           <ul>
-            {this.props.posts.map((post) => (
-              <li key={post.id}>{post.title}</li>
-            ))}
+          <li>{this.props.posts2}</li>
+
           </ul>
         </header>
       </div>
@@ -60,7 +59,7 @@ class Box1 extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { posts: state.posts };
+  return { posts2: state.posts2 };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -69,4 +68,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Box1);
+export default connect(mapStateToProps, mapDispatchToProps)(Box4);
